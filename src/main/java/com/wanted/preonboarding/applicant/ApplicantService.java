@@ -1,18 +1,18 @@
 package com.wanted.preonboarding.applicant;
 
 import com.wanted.preonboarding.recruit.dto.ApplicantApplyingDto;
-import com.wanted.preonboarding.recruit.dto.RecruitApplyResponseDto;
-import com.wanted.preonboarding.recruit.dto.RecruitDetailResponseDto;
+import com.wanted.preonboarding.recruit.dto.ApplyRecruitmentResponseDto;
+import com.wanted.preonboarding.recruit.dto.RecruitmentDetailResponseDto;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ApplicantService {
 
-    public RecruitDetailResponseDto findRecruitmentDetail(Long recruitmentId) {
+    public RecruitmentDetailResponseDto findRecruitmentDetail(Long recruitmentId) {
         return null;
     }
 
-    public RecruitApplyResponseDto applyingRecruitment(Long recruitmentId, ApplicantApplyingDto applicantApplyingDto) {
+    public ApplyRecruitmentResponseDto applyingRecruitment(Long recruitmentId, ApplicantApplyingDto applicantApplyingDto) {
         return null;
     }
 
