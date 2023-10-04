@@ -1,4 +1,4 @@
 package com.wanted.preonboarding.recruit.dto;
 
-public class RecruitApplyResponseDto {
+public class RecruitmentSearchRequestDto {
 }
