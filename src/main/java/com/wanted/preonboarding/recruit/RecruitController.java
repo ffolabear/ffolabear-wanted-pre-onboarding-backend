@@ -9,8 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 //채용공고 컨트롤러
-@RestController("/recruitment")
 @RequiredArgsConstructor
+@RestController("/recruitment")
 public class RecruitController {
 
     private final RecruitService recruitService;
