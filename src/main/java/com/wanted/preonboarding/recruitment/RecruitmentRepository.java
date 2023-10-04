@@ -1,4 +1,4 @@
-package com.wanted.preonboarding.recruit;
+package com.wanted.preonboarding.recruitment;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;

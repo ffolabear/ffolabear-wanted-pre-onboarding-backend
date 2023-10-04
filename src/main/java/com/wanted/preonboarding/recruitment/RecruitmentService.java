@@ -1,9 +1,9 @@
-package com.wanted.preonboarding.recruit;
+package com.wanted.preonboarding.recruitment;
 
-import com.wanted.preonboarding.recruit.dto.RecruitmentRegisterDto;
-import com.wanted.preonboarding.recruit.dto.RecruitmentResponseDto;
-import com.wanted.preonboarding.recruit.dto.RecruitmentSearchRequestDto;
-import com.wanted.preonboarding.recruit.dto.RecruitmentUpdateDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentRegisterDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentResponseDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentSearchRequestDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentUpdateDto;
 import org.springframework.stereotype.Service;
 
 @Service
