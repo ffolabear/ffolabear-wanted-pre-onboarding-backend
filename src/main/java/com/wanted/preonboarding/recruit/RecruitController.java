@@ -1,23 +1,30 @@
 package com.wanted.preonboarding.recruit;
 
 import com.wanted.preonboarding.common.CommonResponse;
+import com.wanted.preonboarding.recruit.dto.RecruitRegisterDto;
+import com.wanted.preonboarding.recruit.dto.RecruitSearchRequestDto;
+import com.wanted.preonboarding.recruit.dto.RecruitUpdateDto;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 //채용공고 컨트롤러
 @RestController("/recruitment")
+@RequiredArgsConstructor
 public class RecruitController {
+
+    private final RecruitService recruitService;
 
     //요구사항 1번 - 채용공고 등록
     @PostMapping
-    public void registerRecruitment(RecruitRegisterDto recruitRegisterDto) {
-
+    public void postRecruitment(RecruitRegisterDto recruitRegisterDto) {
+        recruitService.addRecruitment(recruitRegisterDto);
     }
 
     //요구사항 2번 - 채용공고 수정
-    @PostMapping("/{recruitmentId}")
-    public ResponseEntity<CommonResponse> updateRecruitment(RecruitUpdateDto recruitUpdateDto,
-                                                            @PathVariable Long recruitmentId) {
+    @PutMapping("/{recruitmentId}")
+    public ResponseEntity<CommonResponse> putRecruitment(RecruitUpdateDto recruitUpdateDto,
+                                                         @PathVariable Long recruitmentId) {
         return null;
     }
 
@@ -35,7 +42,7 @@ public class RecruitController {
 
     //요구사항 4-2번 - 채용공고 검색
     @GetMapping
-    public ResponseEntity<CommonResponse> searchRecruitment() {
+    public ResponseEntity<CommonResponse> getSearchedRecruitment(RecruitSearchRequestDto recruitSearchRequestDto) {
         return null;
     }
 
