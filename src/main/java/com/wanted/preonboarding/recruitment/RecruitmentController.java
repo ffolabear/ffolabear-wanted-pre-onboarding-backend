@@ -1,9 +1,9 @@
-package com.wanted.preonboarding.recruit;
+package com.wanted.preonboarding.recruitment;
 
 import com.wanted.preonboarding.common.CommonResponse;
-import com.wanted.preonboarding.recruit.dto.RecruitmentRegisterDto;
-import com.wanted.preonboarding.recruit.dto.RecruitmentSearchRequestDto;
-import com.wanted.preonboarding.recruit.dto.RecruitmentUpdateDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentRegisterDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentSearchRequestDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
