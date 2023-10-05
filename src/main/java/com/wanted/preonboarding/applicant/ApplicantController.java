@@ -1,5 +1,6 @@
 package com.wanted.preonboarding.applicant;
 
+import com.wanted.preonboarding.applicant.dto.ApplicantApplyingDto;
 import com.wanted.preonboarding.common.CommonResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
