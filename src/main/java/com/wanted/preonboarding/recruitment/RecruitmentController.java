@@ -41,7 +41,7 @@ public class RecruitmentController {
     }
 
     //요구사항 4-2번 - 채용공고 검색
-    @GetMapping
+    @GetMapping("/search")
     public ResponseEntity<CommonResponse> getSearchedRecruitment(RecruitmentSearchRequestDto recruitSearchRequestDto) {
         return null;
     }
