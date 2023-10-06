@@ -1,10 +1,11 @@
 package com.wanted.preonboarding.recruitment.entity;
 
+import com.wanted.preonboarding.common.BaseTime;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-public class Company {
+public class Company extends BaseTime {
 
     @Id
     @Column(name = "company_id")
