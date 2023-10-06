@@ -10,7 +10,8 @@ public enum Tech {
     PYTHON("Python"),
     DJANGO("Django"),
     JAVASCRIPT("Javascript"),
-    NODEJS("Node.js");
+    NODEJS("Node.js"),
+    ETC("기타");
 
     private final String tech;
 
