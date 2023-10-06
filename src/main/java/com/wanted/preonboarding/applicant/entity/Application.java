@@ -1,11 +1,12 @@
 package com.wanted.preonboarding.applicant.entity;
 
+import com.wanted.preonboarding.common.BaseTime;
 import com.wanted.preonboarding.recruitment.entity.Recruitment;
 import jakarta.persistence.*;
 import org.hibernate.annotations.ColumnDefault;
 
 @Entity
-public class Application {
+public class Application extends BaseTime {
 
     @Id
     @Column(name = "application_id")

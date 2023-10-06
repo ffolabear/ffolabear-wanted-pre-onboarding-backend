@@ -1,4 +1,4 @@
-package com.wanted.preonboarding.common;
+package com.wanted.preonboarding.common.code;
 
 import org.springframework.http.HttpStatus;
 

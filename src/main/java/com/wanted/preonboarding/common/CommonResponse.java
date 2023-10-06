@@ -1,7 +1,10 @@
 package com.wanted.preonboarding.common;
 
+import com.wanted.preonboarding.common.code.Code;
+import com.wanted.preonboarding.common.code.CommonCode;
 import lombok.Builder;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.ResponseEntity;
 
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
@@ -46,4 +49,10 @@ public class CommonResponse {
                 .build();
     }
 
+    public static <T> ResponseEntity<CommonResponse> wrappingData(T responseData, CommonCode code) {
+//        CommonResponse commonResponse = CommonResponse.toResponse(code, responseData);
+//        return ResponseEntity.ok(commonResponse);
+        CommonResponse commonResponse = CommonResponse.toResponse(code, responseData);
+        return new ResponseEntity<>(commonResponse, code.getCode());
+    }
 }

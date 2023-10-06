@@ -1,12 +1,17 @@
 package com.wanted.preonboarding.recruitment;
 
 import com.wanted.preonboarding.common.CommonResponse;
+import com.wanted.preonboarding.common.code.CommonCode;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentRegisterDto;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentSearchRequestDto;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentUpdateDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+
+import java.net.URI;
+
 
 //채용공고 컨트롤러
 @RequiredArgsConstructor
@@ -17,8 +22,16 @@ public class RecruitmentController {
 
     //요구사항 1번 - 채용공고 등록
     @PostMapping
-    public void postRecruitment(RecruitmentRegisterDto recruitRegisterDto) {
-        recruitService.addRecruitment(recruitRegisterDto);
+    public ResponseEntity<CommonResponse> postRecruitment(RecruitmentRegisterDto recruitRegisterDto) {
+        Long createdId = recruitService.addRecruitment(recruitRegisterDto);
+
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .path("/{recruitmentId}")
+                .buildAndExpand(createdId)
+                .toUri();
+
+        return ResponseEntity.created(location).body(CommonResponse.toResponse(CommonCode.CREATED, createdId));
     }
 
     //요구사항 2번 - 채용공고 수정
