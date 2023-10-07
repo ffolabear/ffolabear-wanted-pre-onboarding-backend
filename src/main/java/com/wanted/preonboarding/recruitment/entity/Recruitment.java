@@ -16,6 +16,7 @@ import java.util.List;
 
 @Setter
 @Getter
+@ToString
 @DynamicInsert
 @NoArgsConstructor
 @AllArgsConstructor
@@ -47,7 +48,7 @@ public class Recruitment extends BaseTime {
     private String content;
 
     @OneToMany(mappedBy = "recruitment")
-    private static final List<Application> application = new ArrayList<>();
+    private final List<Application> application = new ArrayList<>();
 
     @Column(name = "is_deleted")
     @ColumnDefault("'N'")
