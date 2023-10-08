@@ -32,7 +32,7 @@ public class RecruitmentRegisterDto {
                 .company(company)
                 .position(this.position)
                 .signingBonus(this.signingBonus)
-                .techStack(Tech.valueOf(this.techStack))
+                .techStack(Tech.isTechExist(this.techStack))
                 .content(this.content)
                 .build();
     }

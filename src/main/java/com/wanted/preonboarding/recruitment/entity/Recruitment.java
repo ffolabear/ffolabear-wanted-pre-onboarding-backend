@@ -5,7 +5,7 @@ package com.wanted.preonboarding.recruitment.entity;
 import com.wanted.preonboarding.applicant.entity.Application;
 import com.wanted.preonboarding.common.BaseTime;
 import com.wanted.preonboarding.common.Tech;
-import com.wanted.preonboarding.recruitment.dto.RecruitmentRegisterDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentUpdateDto;
 import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -14,8 +14,8 @@ import org.hibernate.annotations.DynamicInsert;
 import java.util.ArrayList;
 import java.util.List;
 
-@Setter
 @Getter
+@Setter
 @ToString
 @DynamicInsert
 @NoArgsConstructor
@@ -53,5 +53,13 @@ public class Recruitment extends BaseTime {
     @Column(name = "is_deleted")
     @ColumnDefault("'N'")
     private String isDeleted;
+
+    public Recruitment modifyRecruitment(Recruitment originalRecruitment, RecruitmentUpdateDto recruitmentUpdateDto) {
+        originalRecruitment.setPosition(recruitmentUpdateDto.getPosition());
+        originalRecruitment.setSigningBonus(recruitmentUpdateDto.getSigningBonus());
+        originalRecruitment.setTechStack(Tech.isTechExist(recruitmentUpdateDto.getTechStack()));
+        originalRecruitment.setContent(recruitmentUpdateDto.getContent());
+        return originalRecruitment;
+    }
 
 }
