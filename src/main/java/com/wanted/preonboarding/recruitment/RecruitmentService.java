@@ -31,12 +31,15 @@ public class RecruitmentService {
     }
 
     @Transactional
-    public void modifyRecruitment(RecruitmentUpdateDto recruitUpdateDto, Long recruitmentId) {
-
+    public Long modifyRecruitment(RecruitmentUpdateDto recruitUpdateDto, Long recruitmentId) {
+        Recruitment originalRecruitment = recruitmentRepository.findById(recruitmentId).orElseThrow(
+                () -> new CompanyException(CompanyErrorCode.COMPANY_NOT_FOUND));
+        originalRecruitment = originalRecruitment.modifyRecruitment(originalRecruitment, recruitUpdateDto);
+        return originalRecruitment.getId();
     }
 
     @Transactional
-    public void removeRecruitment(RecruitmentUpdateDto recruitUpdateDto, Long recruitmentId) {
+    public void removeRecruitment(Long recruitmentId) {
 
     }
 

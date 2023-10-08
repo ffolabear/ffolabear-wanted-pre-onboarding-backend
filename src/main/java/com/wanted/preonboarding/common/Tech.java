@@ -13,9 +13,18 @@ public enum Tech {
     NODEJS("Node.js"),
     ETC("기타");
 
-    private final String tech;
+    private final String techStack;
 
-    Tech(String tech) {
-        this.tech = tech;
+    Tech(String techStack) {
+        this.techStack = techStack;
+    }
+
+    public static Tech isTechExist(String query) {
+        for (Tech tech : Tech.values()) {
+            if (tech.techStack.equals(query)) {
+                return tech;
+            }
+        }
+        return Tech.ETC;
     }
 }
