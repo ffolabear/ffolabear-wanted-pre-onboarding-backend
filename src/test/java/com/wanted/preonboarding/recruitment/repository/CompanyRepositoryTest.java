@@ -11,6 +11,7 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+@DisplayName("채용공고 Repository 클래스 테스트")
 @DataJpaTest
 class CompanyRepositoryTest {
 
@@ -33,7 +34,7 @@ class CompanyRepositoryTest {
 
     @Test
     @DisplayName("채용공고 등록 테스트")
-    void addRecruitmentTest() {
+    void saveRecruitmentTest() {
 
         Company company = companyRepository.findAll().get(0);
         //given
@@ -55,7 +56,7 @@ class CompanyRepositoryTest {
 
     @Test
     @DisplayName("채용공고 수정 테스트")
-    void modifyRecruitment() {
+    void saveModifiedRecruitment() {
 
         //given
         Recruitment recruitment = Recruitment.builder()
