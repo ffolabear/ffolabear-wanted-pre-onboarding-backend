@@ -3,8 +3,14 @@ package com.wanted.preonboarding.applicant.entity;
 import com.wanted.preonboarding.common.BaseTime;
 import com.wanted.preonboarding.recruitment.entity.Recruitment;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.NoArgsConstructor;
 import org.hibernate.annotations.ColumnDefault;
 
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Application extends BaseTime {
 
