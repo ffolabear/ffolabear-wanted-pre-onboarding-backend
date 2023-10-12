@@ -1,11 +1,9 @@
 package com.wanted.preonboarding.recruitment.repository;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.wanted.preonboarding.common.Tech;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentSearchRequestDto;
-import com.wanted.preonboarding.recruitment.entity.QRecruitment;
 import com.wanted.preonboarding.recruitment.entity.Recruitment;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
@@ -13,7 +11,7 @@ import org.springframework.util.StringUtils;
 
 import java.util.List;
 
-import static com.wanted.preonboarding.recruitment.entity.QRecruitment.*;
+import static com.wanted.preonboarding.recruitment.entity.QRecruitment.recruitment;
 
 @RequiredArgsConstructor
 @Repository
@@ -57,6 +55,5 @@ public class QuerydslRecruitmentRepositoryImpl implements QuerydslRecruitmentRep
         }
         return null;
     }
-
 
 }
