@@ -3,6 +3,7 @@ package com.wanted.preonboarding.common;
 import com.wanted.preonboarding.common.code.Code;
 import com.wanted.preonboarding.common.code.CommonCode;
 import lombok.Builder;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 
@@ -11,6 +12,7 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 @RequiredArgsConstructor
+@Getter
 @Builder
 public class CommonResponse {
 

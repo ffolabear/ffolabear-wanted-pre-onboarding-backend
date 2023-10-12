@@ -5,6 +5,8 @@ package com.wanted.preonboarding.recruitment.entity;
 import com.wanted.preonboarding.applicant.entity.Application;
 import com.wanted.preonboarding.common.BaseTime;
 import com.wanted.preonboarding.common.Tech;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentDetailResponseDto;
+import com.wanted.preonboarding.recruitment.dto.RecruitmentResponseDto;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentUpdateDto;
 import jakarta.persistence.*;
 import lombok.*;
@@ -62,4 +64,30 @@ public class Recruitment extends BaseTime {
         return originalRecruitment;
     }
 
+    public RecruitmentResponseDto toRecruitment(Recruitment recruitment) {
+        Company company = recruitment.getCompany();
+        return RecruitmentResponseDto.builder()
+                .id(recruitment.id)
+                .companyName(company.getName())
+                .countryCountry(company.getRegion())
+                .countryRegion(company.getRegion())
+                .signingBonus(recruitment.signingBonus)
+                .techStack(recruitment.techStack.getTechStack())
+                .build();
+    }
+
+    public RecruitmentDetailResponseDto toSearchedRecruitment(
+            Recruitment recruitment, List<RecruitmentResponseDto> companyRecruitments) {
+        Company company = recruitment.getCompany();
+        return RecruitmentDetailResponseDto.builder()
+                .id(recruitment.getId())
+                .companyName(company.getName())
+                .companyRegion(company.getRegion())
+                .position(recruitment.getPosition())
+                .signingBonus(recruitment.getSigningBonus())
+                .techStack(recruitment.techStack.getTechStack())
+                .content(recruitment.getContent())
+                .companyRecruitments(companyRecruitments)
+                .build();
+    }
 }
