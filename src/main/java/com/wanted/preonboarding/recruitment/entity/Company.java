@@ -7,9 +7,10 @@ import org.hibernate.annotations.ColumnDefault;
 
 @ToString
 @Getter
-@Builder
+@Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity
 public class Company extends BaseTime {
 
@@ -27,5 +28,7 @@ public class Company extends BaseTime {
     @Column(name = "is_deleted")
     @ColumnDefault("'N'")
     private String isDeleted;
+
+
 
 }

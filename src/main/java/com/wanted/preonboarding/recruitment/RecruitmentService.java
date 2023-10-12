@@ -40,14 +40,9 @@ public class RecruitmentService {
 
     @Transactional
     public void removeRecruitment(Long recruitmentId) {
-
+        Recruitment recruitment = recruitmentRepository.findById(recruitmentId).orElseThrow(
+                () -> new CompanyException(CompanyErrorCode.COMPANY_NOT_FOUND));
+        recruitmentRepository.delete(recruitment);
     }
 
-    public RecruitmentResponseDto findRecruitment() {
-        return null;
-    }
-
-    public RecruitmentResponseDto searchRecruitment(RecruitmentSearchRequestDto recruitSearchRequestDto) {
-        return null;
-    }
 }
