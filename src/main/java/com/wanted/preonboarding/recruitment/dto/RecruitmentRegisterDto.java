@@ -4,12 +4,14 @@ import com.wanted.preonboarding.common.Tech;
 import com.wanted.preonboarding.recruitment.entity.Company;
 import com.wanted.preonboarding.recruitment.entity.Recruitment;
 import jakarta.validation.constraints.NotBlank;
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 import org.hibernate.validator.constraints.Length;
 
 //채용공고 등록 데이터 dto
 @Getter
+@ToString
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class RecruitmentRegisterDto {
 
