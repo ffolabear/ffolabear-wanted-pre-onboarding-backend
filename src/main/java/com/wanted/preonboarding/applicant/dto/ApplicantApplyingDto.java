@@ -6,6 +6,5 @@ import lombok.Getter;
 public class ApplicantApplyingDto {
 
     private Long applicantId;
-    private Long recruitmentId;
 
 }
