@@ -59,11 +59,10 @@ public class ApplicantService {
         return findRecruitment.toSearchedRecruitment(findRecruitment, convertedRecruitments);
     }
 
-    public void applyingRecruitment(ApplicantApplyingDto applicantApplyingDto) {
-
+    public void applyingRecruitment(Long recruitmentId, ApplicantApplyingDto applicantApplyingDto) {
         Applicant applyingApplicant = applicantRepository.findById(applicantApplyingDto.getApplicantId()).orElseThrow(
                 () -> new ApplicantException(ApplicantErrorCode.APPLICANT_NOT_FOUND));
-        Recruitment applyingRecruitment = recruitmentRepository.findById(applicantApplyingDto.getRecruitmentId()).orElseThrow(
+        Recruitment applyingRecruitment = recruitmentRepository.findById(recruitmentId).orElseThrow(
                 () -> new RecruitmentException(RecruitmentErrorCode.RECRUITMENT_NOT_FOUND));
         Application appliedApplication = Application.builder()
                 .applicant(applyingApplicant)
