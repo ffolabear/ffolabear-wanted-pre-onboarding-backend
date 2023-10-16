@@ -40,7 +40,7 @@ public class RecruitmentService {
     public void removeRecruitment(Long recruitmentId) {
         Recruitment recruitment = recruitmentRepository.findById(recruitmentId).orElseThrow(
                 () -> new CompanyException(CompanyErrorCode.COMPANY_NOT_FOUND));
-        recruitmentRepository.delete(recruitment);
+        recruitment.setIsDeleted("Y");
     }
 
 }
