@@ -5,7 +5,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
-@ToString
 @Getter
 @Setter
 @NoArgsConstructor
@@ -28,7 +27,5 @@ public class Company extends BaseTime {
     @Column(name = "is_deleted")
     @ColumnDefault("'N'")
     private String isDeleted;
-
-
 
 }

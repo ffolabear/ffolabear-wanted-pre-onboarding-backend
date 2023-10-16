@@ -17,9 +17,10 @@ import java.time.LocalDateTime;
 public abstract class BaseTime {
 
     @CreatedDate
-    @Column(updatable = false)
+    @Column(name = "reg_date",updatable = false)
     private LocalDateTime regDate;
 
     @LastModifiedDate
+    @Column(name = "last_update_date")
     private LocalDateTime lastUpdateDate;
 }

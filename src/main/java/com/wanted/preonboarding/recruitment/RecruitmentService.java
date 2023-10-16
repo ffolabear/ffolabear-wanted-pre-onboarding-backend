@@ -3,8 +3,6 @@ package com.wanted.preonboarding.recruitment;
 import com.wanted.preonboarding.common.code.CompanyErrorCode;
 import com.wanted.preonboarding.common.exception.CompanyException;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentRegisterDto;
-import com.wanted.preonboarding.recruitment.dto.RecruitmentResponseDto;
-import com.wanted.preonboarding.recruitment.dto.RecruitmentSearchRequestDto;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentUpdateDto;
 import com.wanted.preonboarding.recruitment.entity.Company;
 import com.wanted.preonboarding.recruitment.entity.Recruitment;
