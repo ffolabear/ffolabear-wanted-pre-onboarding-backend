@@ -35,7 +35,7 @@ public class RecruitmentController {
 
     //요구사항 2번 - 채용공고 수정
     @PutMapping("/{recruitmentId}")
-    public ResponseEntity<CommonResponse> putRecruitment(RecruitmentUpdateDto recruitUpdateDto,
+    public ResponseEntity<CommonResponse> putRecruitment(@RequestBody RecruitmentUpdateDto recruitUpdateDto,
                                                          @PathVariable Long recruitmentId) {
         Long modifiedId = recruitService.modifyRecruitment(recruitUpdateDto, recruitmentId);
         URI location = ServletUriComponentsBuilder
