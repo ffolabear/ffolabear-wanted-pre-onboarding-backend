@@ -1,6 +1,7 @@
 package com.wanted.preonboarding.recruitment;
 
 import com.wanted.preonboarding.common.Tech;
+import com.wanted.preonboarding.config.TestConfig;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentRegisterDto;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentUpdateDto;
 import com.wanted.preonboarding.recruitment.entity.Company;
@@ -11,11 +12,13 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.context.annotation.Import;
 import org.springframework.transaction.annotation.Transactional;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @Transactional
+@Import({TestConfig.class})
 @DisplayName("채용공고 Service 클래스 테스트")
 @SpringBootTest
 class RecruitmentServiceTest {
@@ -27,25 +30,19 @@ class RecruitmentServiceTest {
     @Autowired
     private RecruitmentService recruitmentService;
 
-
     Company company;
+
     @BeforeEach
     void getTestCompany() {
-        Company testcompany = Company.builder()
-                .name("원티드")
-                .country("대한민국")
-                .region("서울시 송파구")
-                .build();
-        companyRepository.save(testcompany);
         company = companyRepository.findAll().get(0);
     }
 
     @Test
     @DisplayName("채용공고 저장 테스트")
     void addRecruitmentTest() {
+
         //given
         int originalRepositorySize = recruitmentRepository.findAll().size();
-
         RecruitmentRegisterDto recruitmentRegisterDto = RecruitmentRegisterDto.builder()
                 .position("백엔드 주니어 개발자")
                 .companyId(company.getId())
@@ -53,9 +50,9 @@ class RecruitmentServiceTest {
                 .techStack("Spring")
                 .content("많은 지원 바랍니다.")
                 .build();
-        recruitmentService.addRecruitment(recruitmentRegisterDto);
 
         //when
+        recruitmentService.addRecruitment(recruitmentRegisterDto);
 
         //then
         assertThat(recruitmentRepository.findAll().size()).isEqualTo(originalRepositorySize + 1);
@@ -87,6 +84,27 @@ class RecruitmentServiceTest {
         //then
         assertThat(recruitmentRepository.findById(savedRecruitmentId).get().getPosition())
                 .isNotEqualTo(originalPosition);
+    }
+
+    @Test
+    @DisplayName("채용공고 삭제 테스트")
+    void deleteRecruitmentTest() {
+        //given
+        RecruitmentRegisterDto recruitmentRegisterDto = RecruitmentRegisterDto.builder()
+                .position("백엔드 주니어 개발자")
+                .companyId(company.getId())
+                .signingBonus(5_000_000)
+                .techStack("Spring")
+                .content("많은 지원 바랍니다.")
+                .build();
+        Long savedRecruitmentId = recruitmentService.addRecruitment(recruitmentRegisterDto);
+        int originalSize = recruitmentRepository.findAll().size();
+
+        //when
+        recruitmentService.removeRecruitment(savedRecruitmentId);
+
+        //then
+        assertThat(recruitmentRepository.findAll().size()).isEqualTo(originalSize - 1);
     }
 
 }
