@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import static com.wanted.preonboarding.config.Name.*;
+
 @RequiredArgsConstructor
 @Transactional
 @Component
@@ -27,18 +29,18 @@ public class TestDataInit {
     Applicant applicant;
     Application application;
 
-    public void createCompanyDummyData() {
+    private void createCompanyDummyData() {
         company = Company.builder()
-                .name("원티드")
+                .name(COMPANY.getRandomName())
                 .country("대한민국")
-                .region("서울시 송파구")
+                .region(REGION.getRandomName())
                 .build();
         companyRepository.save(company);
     }
 
-     public void createRecruitmentDummyData() {
+     private void createRecruitmentDummyData() {
         recruitment = Recruitment.builder()
-                .position("주니어 백엔드 개발자")
+                .position(POSITION.getRandomName())
                 .company(company)
                 .signingBonus(500_000)
                 .techStack(Tech.isTechExist("Spring"))
@@ -47,19 +49,31 @@ public class TestDataInit {
         recruitmentRepository.save(recruitment);
     }
 
-    void createApplicantDummyData() {
+    private void createApplicantDummyData() {
         applicant = Applicant.builder()
-                .name("김원티드")
+                .name(APPLICANT.getRandomName())
                 .build();
         applicantRepository.save(applicant);
     }
 
-    public void createApplicationDummyData() {
+    private void createApplicationDummyData() {
         application = Application.builder()
                 .applicant(applicant)
                 .recruitment(recruitment)
                 .build();
         applicationRepository.save(application);
+    }
+
+    public void createDummyDataForRecruitmentTest() {
+        createCompanyDummyData();
+        createRecruitmentDummyData();
+    }
+
+    public void createDummyDataForApplicantTest() {
+        createCompanyDummyData();
+        createRecruitmentDummyData();
+        createApplicantDummyData();
+        createApplicationDummyData();
     }
 
 }

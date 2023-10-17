@@ -33,8 +33,7 @@ class RecruitmentServiceTest {
 
     @BeforeEach
     void setUp() {
-        testDataInit.createCompanyDummyData();
-        testDataInit.createRecruitmentDummyData();
+        testDataInit.createDummyDataForRecruitmentTest();
     }
 
     @Test
@@ -43,7 +42,7 @@ class RecruitmentServiceTest {
 
         //given
         Company company = companyRepository.findAll().get(0);
-
+        System.out.println(company);
         int originalRepositorySize = recruitmentRepository.findAll().size();
         RecruitmentRegisterDto recruitmentRegisterDto = RecruitmentRegisterDto.builder()
                 .position("백엔드 주니어 개발자")
