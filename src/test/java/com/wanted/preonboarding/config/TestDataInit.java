@@ -9,16 +9,14 @@ import com.wanted.preonboarding.recruitment.entity.Company;
 import com.wanted.preonboarding.recruitment.entity.Recruitment;
 import com.wanted.preonboarding.recruitment.repository.CompanyRepository;
 import com.wanted.preonboarding.recruitment.repository.RecruitmentRepository;
-import jakarta.annotation.PostConstruct;
-import jakarta.annotation.PreDestroy;
 import lombok.RequiredArgsConstructor;
-import org.springframework.boot.test.context.TestConfiguration;
+import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 @RequiredArgsConstructor
 @Transactional
-@TestConfiguration
-public class TestConfig {
+@Component
+public class TestDataInit {
 
     private final CompanyRepository companyRepository;
     private final RecruitmentRepository recruitmentRepository;
@@ -29,15 +27,7 @@ public class TestConfig {
     Applicant applicant;
     Application application;
 
-    @PostConstruct
-    void insertDummyData() {
-        createCompanyDummyData();
-        createRecruitmentDummyData();
-        createApplicantDummyData();
-        createApplicationDummyData();
-    }
-
-    void createCompanyDummyData() {
+    public void createCompanyDummyData() {
         company = Company.builder()
                 .name("원티드")
                 .country("대한민국")
@@ -46,7 +36,7 @@ public class TestConfig {
         companyRepository.save(company);
     }
 
-    void createRecruitmentDummyData() {
+     public void createRecruitmentDummyData() {
         recruitment = Recruitment.builder()
                 .position("주니어 백엔드 개발자")
                 .company(company)
@@ -64,20 +54,12 @@ public class TestConfig {
         applicantRepository.save(applicant);
     }
 
-    void createApplicationDummyData() {
+    public void createApplicationDummyData() {
         application = Application.builder()
                 .applicant(applicant)
                 .recruitment(recruitment)
                 .build();
         applicationRepository.save(application);
-    }
-
-    @PreDestroy
-    void deleteDummyData() {
-        companyRepository.deleteAll();
-        recruitmentRepository.deleteAll();
-        applicantRepository.deleteAll();
-        applicationRepository.deleteAll();
     }
 
 }
