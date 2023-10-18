@@ -202,8 +202,6 @@ class ApplicantServiceTest {
     void findRecruitmentDetailTest() {
         Recruitment existingRecruitment = recruitmentRepository.findAll().get(5);
         RecruitmentDetailResponseDto recruitmentDetail = applicantService.findRecruitmentDetail(existingRecruitment.getId());
-        System.out.println(existingRecruitment);
-        System.out.println(recruitmentDetail);
         assertThat(recruitmentDetail.getContent()).isEqualTo(existingRecruitment.getContent());
     }
 

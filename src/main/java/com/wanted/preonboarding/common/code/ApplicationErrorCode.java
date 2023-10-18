@@ -4,9 +4,9 @@ import lombok.Getter;
 import org.springframework.http.HttpStatus;
 
 @Getter
-public enum ApplicationErrorCode implements Code{
+public enum ApplicationErrorCode implements Code {
 
-    APPLIED_APPLICATION(HttpStatus.BAD_REQUEST,"이미 지원한 공고입니다.");
+    APPLIED_APPLICATION(HttpStatus.BAD_REQUEST, "이미 지원한 공고입니다.");
 
     private final HttpStatus code;
     private final String message;

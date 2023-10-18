@@ -10,6 +10,7 @@ public interface RecruitmentRepository extends JpaRepository<Recruitment, Long> 
     Recruitment findByCompany_Name(String name);
 
     List<Recruitment> findAllByCompany_Name(String companyName);
+
     List<Recruitment> findAllByOrderByRegDateDesc();
 
 }
