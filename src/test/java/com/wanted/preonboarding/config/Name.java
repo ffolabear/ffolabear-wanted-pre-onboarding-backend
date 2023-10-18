@@ -1,12 +1,10 @@
 package com.wanted.preonboarding.config;
 
 import lombok.Getter;
-import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-import java.util.Random;
 
 @Getter
 public enum Name {
