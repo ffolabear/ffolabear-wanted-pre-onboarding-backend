@@ -2,13 +2,13 @@ package com.wanted.preonboarding.applicant.entity;
 
 import com.wanted.preonboarding.common.BaseTime;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
 
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
+@Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
@@ -22,10 +22,12 @@ public class Applicant extends BaseTime {
 
     private String name;
 
-    @OneToMany(mappedBy = "applicant")
-    private Set<Application> applications;
+    @Builder.Default
+    @OneToMany(mappedBy = "applicant", fetch = FetchType.EAGER)
+    private List<Application> applications = new ArrayList<>();
 
     @Column(name = "is_deleted")
     @ColumnDefault("'N'")
     private String isDeleted;
+
 }

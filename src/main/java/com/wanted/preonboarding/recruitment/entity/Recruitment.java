@@ -68,8 +68,9 @@ public class Recruitment extends BaseTime {
         return RecruitmentResponseDto.builder()
                 .id(recruitment.id)
                 .companyName(company.getName())
-                .countryCountry(company.getRegion())
+                .countryCountry(company.getCountry())
                 .countryRegion(company.getRegion())
+                .position(recruitment.getPosition())
                 .signingBonus(recruitment.signingBonus)
                 .techStack(recruitment.techStack.getTechStack())
                 .build();
@@ -88,5 +89,19 @@ public class Recruitment extends BaseTime {
                 .content(recruitment.getContent())
                 .companyRecruitments(companyRecruitments)
                 .build();
+    }
+
+    @Override
+    public String toString() {
+        return "Recruitment{" +
+                "id=" + id +
+                ", position='" + position + '\'' +
+                ", company=" + company +
+                ", signingBonus=" + signingBonus +
+                ", techStack=" + techStack +
+                ", content='" + content + '\'' +
+                ", application=" + application +
+                ", isDeleted='" + isDeleted + '\'' +
+                "} + '\n'";
     }
 }
