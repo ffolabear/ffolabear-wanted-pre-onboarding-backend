@@ -21,11 +21,14 @@ public class QuerydslRecruitmentRepositoryImpl implements QuerydslRecruitmentRep
 
     @Override
     public List<Recruitment> findRecruitmentByCondition(RecruitmentSearchRequestDto recruitmentSearchRequestDto) {
-        List<Recruitment> filteredRecruitment = query.select(recruitment)
+        return query.select(recruitment)
                 .from(recruitment)
-                .where()
+                .where(
+                        eqPosition(recruitmentSearchRequestDto.getPosition()),
+                        eqCompany(recruitmentSearchRequestDto.getCompanyName()),
+                        goeSigningBonus(recruitmentSearchRequestDto.getSigningBonus()),
+                        eqTechStack(recruitmentSearchRequestDto.getTechStack()))
                 .fetch();
-        return null;
     }
 
     private BooleanExpression eqPosition(String position) {
@@ -36,10 +39,10 @@ public class QuerydslRecruitmentRepositoryImpl implements QuerydslRecruitmentRep
     }
 
     private BooleanExpression goeSigningBonus(Integer signingBonus) {
-        if (signingBonus > 0) {
-            return recruitment.signingBonus.goe(signingBonus);
+        if (signingBonus == null || signingBonus < 0) {
+            return null;
         }
-        return null;
+        return recruitment.signingBonus.goe(signingBonus);
     }
 
     private BooleanExpression eqCompany(String companyName) {
