@@ -48,6 +48,7 @@ public class TestDataInit {
                 .signingBonus((random.nextInt(5) + 2) * 100000)
                 .techStack(getRandomTech())
                 .content("많은 지원바랍니다.")
+                .isDeleted("N")
                 .build();
         recruitmentRepository.save(recruitment);
     }
