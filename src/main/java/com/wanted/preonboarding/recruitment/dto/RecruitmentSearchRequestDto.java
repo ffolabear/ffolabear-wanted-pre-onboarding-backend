@@ -1,7 +1,14 @@
 package com.wanted.preonboarding.recruitment.dto;
 
-import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 
+@ToString
+@Getter
+@AllArgsConstructor
+@Builder
 public class RecruitmentSearchRequestDto {
 
     private String position;
