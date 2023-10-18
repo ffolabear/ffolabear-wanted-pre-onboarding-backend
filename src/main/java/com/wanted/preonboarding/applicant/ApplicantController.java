@@ -8,10 +8,7 @@ import com.wanted.preonboarding.recruitment.dto.RecruitmentResponseDto;
 import com.wanted.preonboarding.recruitment.dto.RecruitmentSearchRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -43,8 +40,8 @@ public class ApplicantController {
 
     //요구사항 6번 - 채용공고 지원
     @PostMapping("/{recruitmentId}")
-    public ResponseEntity<CommonResponse> postApplyingRecruitment(@PathVariable Long recruitmentId, ApplicantApplyingDto applicantApplyingDto) {
-        applicantService.applyingRecruitment(recruitmentId,applicantApplyingDto);
+    public ResponseEntity<CommonResponse> postApplyingRecruitment(@RequestBody ApplicantApplyingDto applicantApplyingDto) {
+        applicantService.applyingRecruitment(applicantApplyingDto);
         return ResponseEntity.ok(CommonResponse.toResponse(CommonCode.OK));
     }
 
