@@ -5,7 +5,10 @@
 - Java 17 (Amazon corretto)
 - SpringBoot 3.1.4
 - JPA
+- QueryDSL
 - MySQL
+- H2 (테스트 환경)
+- JUnit5
 
 <br>
 
