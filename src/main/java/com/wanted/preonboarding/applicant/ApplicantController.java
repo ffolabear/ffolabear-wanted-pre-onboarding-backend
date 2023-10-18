@@ -9,15 +9,19 @@ import com.wanted.preonboarding.recruitment.dto.RecruitmentSearchRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RestController("/applicant")
+@RequestMapping(("/applicant"))
+@RestController
 public class ApplicantController {
 
     private final ApplicantService applicantService;
 
+    //요구사항 4-1번 - 채용공고 목록 조회
     @GetMapping("/recruitmentList")
     public ResponseEntity<CommonResponse> getAllRecruitment() {
         List<RecruitmentResponseDto> allRecruitment = applicantService.findAllRecruitment();
@@ -42,7 +46,11 @@ public class ApplicantController {
     @PostMapping("/{recruitmentId}")
     public ResponseEntity<CommonResponse> postApplyingRecruitment(@RequestBody ApplicantApplyingDto applicantApplyingDto) {
         applicantService.applyingRecruitment(applicantApplyingDto);
-        return ResponseEntity.ok(CommonResponse.toResponse(CommonCode.OK));
+        URI location = ServletUriComponentsBuilder
+                .fromCurrentRequest()
+                .build()
+                .toUri();
+        return ResponseEntity.created(location).body(CommonResponse.toResponse(CommonCode.CREATED));
     }
 
 }

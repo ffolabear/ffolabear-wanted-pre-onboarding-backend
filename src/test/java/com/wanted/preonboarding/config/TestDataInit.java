@@ -82,7 +82,6 @@ public class TestDataInit {
         for (int i = 0; i < 5; i++) {
             createApplicantDummyData();
         }
-//        createApplicationDummyData();
     }
 
     private Tech getRandomTech() {
