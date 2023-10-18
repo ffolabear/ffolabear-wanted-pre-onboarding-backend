@@ -1,9 +1,12 @@
 package com.wanted.preonboarding.recruitment.dto;
 
 import lombok.Builder;
+import lombok.Getter;
 
 //채용공고 조회 dto
 //채용공괴 조회 및 검색시 사용
+
+@Getter
 @Builder
 public class RecruitmentResponseDto {
 

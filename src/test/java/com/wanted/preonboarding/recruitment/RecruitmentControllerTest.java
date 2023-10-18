@@ -20,7 +20,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.*;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@DisplayName("채용공고 컨트롤러 테스트")
+@DisplayName("채용공고 Controller 테스트")
 @AutoConfigureMockMvc
 @SpringBootTest
 class RecruitmentControllerTest {
@@ -40,8 +40,7 @@ class RecruitmentControllerTest {
 
     @BeforeEach
     void getTestCompany() {
-        testDataInit.createCompanyDummyData();
-        testDataInit.createRecruitmentDummyData();
+        testDataInit.createDummyDataForRecruitmentTest();
     }
 
     @Test

@@ -1,11 +1,15 @@
 package com.wanted.preonboarding.recruitment.dto;
 
-import com.wanted.preonboarding.common.Tech;
 import lombok.Builder;
+import lombok.Getter;
+import lombok.ToString;
 
 import java.util.List;
 
 //채용공고 상세 데이터 dto
+
+@ToString
+@Getter
 @Builder
 public class RecruitmentDetailResponseDto {
 
