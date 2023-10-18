@@ -18,12 +18,10 @@ import com.wanted.preonboarding.recruitment.entity.Recruitment;
 import com.wanted.preonboarding.recruitment.repository.QuerydslRecruitmentRepositoryCustom;
 import com.wanted.preonboarding.recruitment.repository.RecruitmentRepository;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.RejectedExecutionException;
 import java.util.stream.Collectors;
 
