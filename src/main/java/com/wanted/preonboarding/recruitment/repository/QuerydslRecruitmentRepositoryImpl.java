@@ -24,11 +24,16 @@ public class QuerydslRecruitmentRepositoryImpl implements QuerydslRecruitmentRep
         return query.select(recruitment)
                 .from(recruitment)
                 .where(
+                        isNotDeleted(),
                         eqPosition(recruitmentSearchRequestDto.getPosition()),
                         eqCompany(recruitmentSearchRequestDto.getCompanyName()),
                         goeSigningBonus(recruitmentSearchRequestDto.getSigningBonus()),
                         eqTechStack(recruitmentSearchRequestDto.getTechStack()))
                 .fetch();
+    }
+
+    private BooleanExpression isNotDeleted() {
+        return recruitment.isDeleted.eq("N");
     }
 
     private BooleanExpression eqPosition(String position) {
