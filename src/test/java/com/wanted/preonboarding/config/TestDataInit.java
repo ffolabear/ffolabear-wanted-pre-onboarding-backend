@@ -13,6 +13,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Random;
+
 import static com.wanted.preonboarding.config.Name.*;
 
 @RequiredArgsConstructor
@@ -38,12 +40,13 @@ public class TestDataInit {
         companyRepository.save(company);
     }
 
-     private void createRecruitmentDummyData() {
+    private void createRecruitmentDummyData() {
+        Random random = new Random();
         recruitment = Recruitment.builder()
                 .position(POSITION.getRandomName())
                 .company(company)
-                .signingBonus(500_000)
-                .techStack(Tech.isTechExist("Spring"))
+                .signingBonus((random.nextInt(5) + 2) * 100000)
+                .techStack(getRandomTech())
                 .content("많은 지원바랍니다.")
                 .build();
         recruitmentRepository.save(recruitment);
@@ -70,10 +73,22 @@ public class TestDataInit {
     }
 
     public void createDummyDataForApplicantTest() {
-        createCompanyDummyData();
-        createRecruitmentDummyData();
-        createApplicantDummyData();
-        createApplicationDummyData();
+
+        for (int i = 0; i < 10; i++) {
+            createCompanyDummyData();
+            createRecruitmentDummyData();
+        }
+
+        for (int i = 0; i < 5; i++) {
+            createApplicantDummyData();
+        }
+//        createApplicationDummyData();
+    }
+
+    private Tech getRandomTech() {
+        Tech[] techValues = Tech.values();
+        Random random = new Random();
+        return techValues[random.nextInt(techValues.length)];
     }
 
 }
